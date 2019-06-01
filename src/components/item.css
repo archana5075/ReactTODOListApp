@@ -1,0 +1,13 @@
+
+ .strike-Through {
+    text-decoration: line-through;
+    color: red;
+  }
+
+  li{
+      text-align: left;
+  }
+  
+ #delete-button{
+    float: right;
+ }

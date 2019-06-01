@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Item from "./Item";
 import TodoForm from "./TodoForm";
 
@@ -27,6 +27,14 @@ const Todo = () => {
   ];
 
   const [todos, setToDo] = useState(initialState);
+  const [time, setTime] = useState(Date);
+
+   useEffect(()=> {
+     let handle = setInterval(()=>{
+       setTime(Date)
+     },1000)
+     return ()=> clearInterval(handle);
+   });
 
   // Function to add new TODO item
   const addToDo = text => {
@@ -59,12 +67,7 @@ const Todo = () => {
     setToDo(newToDos);
   };
 
-  // Function to Display Date and Time
-  const displayDate =() =>{
-             const date = new Date();
-             const dateTime = date.toLocaleString();
-             return dateTime;
-  }
+  
 
   // Returns TODO APP CARD
 
@@ -72,7 +75,7 @@ const Todo = () => {
     <div cclass="w3-card-4" style={widthApp}>
       <header class="w3-container w3-blue">
         <h1>ToDoList</h1>
-        <h6>{displayDate()}</h6>
+        <h6>{time.toLocaleString()}</h6>
       </header>
 
       <div class="w3-container w3-light-grey">
